@@ -1,0 +1,22 @@
+name: "AWS Deploy"
+description: "deploy into AWS Cloud cluster"
+inputs:
+  cluster: 
+    description: "cluster name"
+    required: true
+  deployfile: 
+    description: "file to be deployed"
+    required: true
+  namespace: 
+    description: "namespace into the cluster"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.cluster }}
+    - ${{ inputs.deployfile }}
+    - ${{ inputs.namespace }}
+branding:
+  color: 'green'
+  icon: 'at-sign'
